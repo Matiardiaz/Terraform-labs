@@ -8,7 +8,7 @@ resource "aws_security_group" "demosg" {
     from_port   = 80
     to_port     = 80
     protocol    = "tcp"
-    referenced_security_group_id = aws_security_group.alb_sg.id
+    security_groups = ["${var.alb_sg_id}"]
     # cidr_blocks = ["0.0.0.0/0"]
   }
 
@@ -17,7 +17,7 @@ resource "aws_security_group" "demosg" {
     from_port   = 443
     to_port     = 443
     protocol    = "tcp"
-    source_security_group_id = aws_security_group.alb_sg.id
+    security_groups = ["${var.alb_sg_id}"]
     # cidr_blocks = ["0.0.0.0/0"]
   }
 
