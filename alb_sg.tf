@@ -40,3 +40,13 @@ resource "aws_security_group" "alb_sg" {
     Name = "ALB-SG"
   }
 }
+
+
+# Defining variable
+variable "alb_sg_id" {
+  default = ""
+}
+
+output "alb_sg_id" {
+  value = "${aws_security_group.alb_sg.id}"
+}
