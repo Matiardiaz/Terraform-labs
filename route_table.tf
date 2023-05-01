@@ -23,3 +23,18 @@ resource "aws_route_table_association" "rt2" {
     subnet_id = "${aws_subnet.application-subnet-2.id}"
     route_table_id = "${aws_route_table.route.id}"
 }
+
+# Asociar default gw a la subnet de las EC2
+# Sino es imposible conectarse por SSH (TIMEOUT)
+
+# Associating Route Table
+resource "aws_route_table_association" "web1" {
+    subnet_id = "${aws_subnet.public-subnet-1.id}"
+    route_table_id = "${aws_route_table.route.id}"
+}
+
+# Associating Route Table
+resource "aws_route_table_association" "web2" {
+    subnet_id = "${aws_subnet.public-subnet-2.id}"
+    route_table_id = "${aws_route_table.route.id}"
+}
